@@ -5,7 +5,7 @@
         private $servername = "localhost";
         private $username = "root";
         private $password = "";
-        private $database = "brgyatyourdoorstep";
+        private $database = "bmis";
         public $conn;
         
         //Constructor
