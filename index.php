@@ -1,10 +1,12 @@
 <?php
     session_start();
-    require_once 'classes/LoginController.php';
-    require_once 'classes/RoutesController.php';
+    require_once 'classes/Controller/LoginController.php';
+    require_once 'classes/Controller/RoutesController.php';
+    require_once 'classes/Controller/MessageController.php';
     $logincontroller = new LoginAccessController;
-    $routes = new Routes;
-
+    $routes = new RoutesController;
+    $messagecontroller = new MessageController;
+    $display = null;
     if(isset($_POST['login'])){
         $username = trim($_POST['username']);
         $password = md5(trim($_POST['password']));
@@ -14,12 +16,20 @@
             $_SESSION['name'] = $credentials['person_fname'];
             $_SESSION['position'] = $credentials['bp_name'];
             if($credentials['bp_code'] == 'SA'){
+
                 echo $routes->adminDashboard();
+
             }elseif($credentials['bp_code'] == 'INTR'){
+
                 echo $routes->volunteerDashboard();
+
             }else{
+
                echo $routes->guest();
+
             }
+        }else{
+           $display = $messagecontroller->errorAlert("User not Found! Incorrect username and password entered!");
         }
     }
 
@@ -50,6 +60,7 @@
                  <img src="images/logo.PNG" alt="img-thumbnail mx-auto d-block">
                 <br>
                 <h3 class="login-heading mb-4">Login</h3>
+                <?php echo $display;?>
                 <form method="POST">
                     <div class="form-label-group">
                     <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username" required autofocus>

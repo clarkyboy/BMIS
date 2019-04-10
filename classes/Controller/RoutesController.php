@@ -1,6 +1,7 @@
 <?php
 
-    class Routes{
+    class RoutesController{
+
         public function adminDashboard(){
             return  header('Location: admin/dashboard.php');
         }
@@ -9,6 +10,9 @@
         }
         public function guest(){
             return  header('Location: guest.php');
+        }
+        public function error404($msg){
+            return header('Location: 404.php?msg='.$msg);
         }
     }
 
