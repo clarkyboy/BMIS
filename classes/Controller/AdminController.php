@@ -1,6 +1,6 @@
 <?php
 
-    require_once './Service/DatabaseService.php';
+    require_once 'classes/Service/DatabaseService.php';
 
     class AdminAccessController extends Database{
 
