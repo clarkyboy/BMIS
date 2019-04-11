@@ -17,6 +17,23 @@
         public function error404($msg){
             return header('Location: 404.php?msg='.$msg);
         }
+
+        public function checkSession($logstat){
+            if($logstat == null){
+                echo $this->index();
+            }
+        }
+        public function checkPosition($position, $location){
+
+            if($position == "Super Admin" && $location =="/BMIS/volunteer/dashboard.php"){
+                return $this->adminDashboard();
+            }elseif($position == "Interviewer" && $location =="/BMIS/admin/dashboard.php"){
+                return $this->volunteerDashboard();
+            }else{
+                return header('Location:'.$location);
+            }
+        }
+
     }
 
 ?>
