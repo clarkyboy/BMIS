@@ -2,22 +2,22 @@
 
     class PersonModel {
 
-        private $id;
-        private $fname;
-        private $lname;
-        private $dob;
-        private $address;
-        private $telno;
-        private $provaddr;
-        private $gender;
-        private $email;
-        private $bloodtype;
-        private $sss;
-        private $tin;
-        private $philhealth;
-        private $pagibig;
-        private $psg;
-        private $status;
+        public $id;
+        public $fname;
+        public $lname;
+        public $dob;
+        public $address;
+        public $telno;
+        public $provaddr;
+        public $gender;
+        public $email;
+        public $bloodtype;
+        public $sss;
+        public $tin;
+        public $philhealth;
+        public $pagibig;
+        public $psg;
+        public $status;
 
         public function toString(){
             return $this->id." Name: ".$this->fname." ".$this->lname."<br> Date of Birth: ".$this->dob."<br> Address: ".$this->address."<br> Telephone: ".$this->telno.

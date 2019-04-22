@@ -2,6 +2,7 @@
     session_start();
     $_SESSION['url'] = $_SERVER['REQUEST_URI'];
     require_once '../classes/Controller/RoutesController.php';
+    
     $checker = new RoutesController;
     $checker->checkSession($_SESSION['logstat']);
     // echo $_SESSION['url'];
@@ -21,6 +22,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ezProfile</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
