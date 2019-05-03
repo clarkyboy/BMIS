@@ -4,9 +4,9 @@
 
     class AdminAccessController extends Database{
 
-       public function addPerson($pos, $fname, $lname, $dob, $cityaddr, $provaddr, $email, $telno, $gender,  $date_added, $blood, $sitio, $psg, $username, $password, $tin, $sss, $phil, $pagibig){
-            $sql = "INSERT INTO person (person_fname, person_lname, person_dob, person_address, person_telno, person_provaddr, person_gender, person_email, person_bloodtype, person_sss, person_tin, person_philhealth, person_pagibig, person_sector_group)
-                    VALUES ('$fname', '$lname', '$dob', '$cityaddr', '$telno', '$provaddr', '$gender', '$email', '$blood', '$sss', '$tin', '$phil', '$pagibig', '$psg')";
+       public function addPerson($pos, $fname, $lname, $dob, $cityaddr, $provaddr, $email, $telno, $gender,  $date_added, $blood, $sitio, $psg, $username, $password, $tin, $sss, $phil, $pagibig, $addedby){
+            $sql = "INSERT INTO person (person_fname, person_lname, person_dob, person_address, person_telno, person_provaddr, person_gender, person_email, person_bloodtype, person_sss, person_tin, person_philhealth, person_pagibig, person_sector_group, person_addedby)
+                    VALUES ('$fname', '$lname', '$dob', '$cityaddr', '$telno', '$provaddr', '$gender', '$email', '$blood', '$sss', '$tin', '$phil', '$pagibig', '$psg', '$addedby')";
             $result = $this->conn->query($sql);
             if($result){
                     $person_id = mysqli_insert_id($this->conn);
@@ -19,7 +19,7 @@
                         return FALSE;
                     }
             }else{
-                return $sql;
+                return FALSE;
             }
        }
        public function getSitios(){
@@ -39,6 +39,21 @@
         $result = $this->conn->query($sql);
         $rows = $result->fetch_all(MYSQLI_ASSOC);
         return $rows;
+       }
+       public function checkDuplicate($name, $psg, $sitio_id, $username){
+            $sql = "SELECT * FROM person JOIN bmis_users ON person.person_id = bmis_users.person_id
+                WHERE (person.person_fname = '$name' AND person.person_sector_group = '$psg') OR (bmis_users.sitio_id = '$sitio_id' AND bmis_users.bmis_login_name = '$username')";
+            $result = $this->conn->query($sql);
+            $row = $result->fetch_assoc(); // this will get a single result
+            return $row;
+       }
+
+       public function getAllInterviewers(){
+            $sql = "SELECT * FROM bmis_users JOIN person ON bmis_users.person_id = person.person_id JOIN sitio ON bmis_users.sitio_id = sitio.sitio_id
+            WHERE bmis_users.barangay_position = 11 AND (bmis_users.bmis_status = 'Active' OR bmis_users.bmis_status = 'New') ";
+            $result = $this->conn->query($sql);
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+            return $rows;
        }
 
     }
