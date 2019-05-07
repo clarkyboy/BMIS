@@ -1,3 +1,9 @@
+<?php
+    require_once '../classes/Controller/AdminController.php';
+    $admindao = new AdminAccessController;
+    $list = $admindao->getAllInterviewers();
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin - Blank Page</title>
+  <title>SB Admin - View Interviewers</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,13 +45,49 @@
           <li class="breadcrumb-item">
             <a href="index.html">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Blank Page</li>
+          <li class="breadcrumb-item active">View Interviewer(s)</li>
         </ol>
 
         <!-- Page Content -->
-        <h1>Blank Page</h1>
-        <hr>
-        <p>This is a great starting point for new custom pages.</p>
+        <div class="card mb-3">
+          <div class="card-header">
+          <i class="fas fa-table"></i>
+           View Interviewer</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Barangay</th>
+                      <th>Sitio</th>
+                      <th>Username</th>
+                      <th>Date Registered</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr> 
+                </thead>
+                <tbody>
+                    <?php
+                        foreach($list as $key=>$value){
+                          echo "<tr>";
+                                echo "<td>".$value['person_fname']." ".$value['person_lname']."</td>";
+                                echo "<td>".$value['barangay_name']."</td>";
+                                echo "<td>".$value['sitio_name']."</td>";
+                                echo "<td>".$value['bmis_login_name']."</td>";
+                                echo "<td>".date('F j, Y', strtotime($value['bmis_date_added']))."</td>";
+                                echo "<td>".$value['bmis_status']."</td>";
+                                echo "<td><a href='update_interv.php?id=".$value['bmis_id']."&name=".$value['person_fname']." ".$value['person_lname']."' class='btn btn-outline-warning mr-auto'><i class='fa fa-edit' aria-hidden='true'></i></a>";
+                                echo "<a href='' class='btn btn-outline-danger'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
+                          echo "</tr>";
+                        }
+                    ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted"></div>
+        </div>
 
       </div>
       <!-- /.container-fluid -->

@@ -8,6 +8,7 @@ class UsersModel{
     public $date_added;
     public $login_name;
     public $login_pass;
+    public $status;
 
 
 }

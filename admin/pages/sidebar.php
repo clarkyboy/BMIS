@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="dashboard.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </a>
@@ -13,9 +13,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Interviewer Management</h6>
-          <a class="dropdown-item" href="login.html">Login</a>
-          <a class="dropdown-item" href="register.html">Register</a>
-          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+          <a class="dropdown-item" href="add_interv.php"><i class="fas fa-plus"></i> Add Interviewer</a>
+          <a class="dropdown-item" href="ret_interv.php"><i class="fas fa-book"></i> View Interviewer</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Sector Management</h6>
           <a class="dropdown-item" href="404.html">404 Page</a>

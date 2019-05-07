@@ -49,13 +49,25 @@
        }
 
        public function getAllInterviewers(){
-            $sql = "SELECT * FROM bmis_users JOIN person ON bmis_users.person_id = person.person_id JOIN sitio ON bmis_users.sitio_id = sitio.sitio_id
+            $sql = "SELECT * FROM bmis_users JOIN person ON bmis_users.person_id = person.person_id JOIN sitio ON bmis_users.sitio_id = sitio.sitio_id JOIN barangay ON barangay.barangay_id = sitio.barangay_id
             WHERE bmis_users.barangay_position = 11 AND (bmis_users.bmis_status = 'Active' OR bmis_users.bmis_status = 'New') ";
             $result = $this->conn->query($sql);
             $rows = $result->fetch_all(MYSQLI_ASSOC);
             return $rows;
        }
 
+       public function getSpecificUser($id){
+            $sql = "SELECT * FROM bmis_users WHERE bmis_id = '$id'";
+            $result = $this->conn->query($sql);
+            $row = $result->fetch_assoc();
+            return $row;
+       }
+       public function updateInterviewer($sitio, $username, $password, $position, $status, $id){
+            $sql = "UPDATE bmis_users SET sitio_id = '$sitio', barangay_position = '$position', bmis_login_name = '$username',
+                    bmis_login_pass = '$password', bmis_status = '$status' WHERE bmis_id = '$id'";
+            $result = $this->conn->query($sql);
+            return $result;
+       }
     }
 
 
