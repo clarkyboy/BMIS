@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <head>
-<title>Colored  an Admin Panel Category Flat Bootstrap Responsive Website Template | Blank :: w3layouts</title>
+<title>Colored  an Admin Panel Category Flat Bootstrap Responsive Website Template | Calendar :: w3layouts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Colored Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -42,7 +42,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});	
 		});
 		</script>
-		
+	<!-- calendar -->
+	<link rel="stylesheet" href="css/monthly.css">
+	<!-- //calendar -->
 </head>
 <body class="dashboard-page">
 
@@ -373,26 +375,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</section>
 		<div class="main-grid">
 			<div class="agile-grids">	
-				<!-- blank-page -->
-				
-				<div class="banner">
-					<h2>
-						<a href="index.html">Home</a>
-						<i class="fa fa-angle-right"></i>
-						<span>Blank</span>
-					</h2>
-				</div>
-				
-				<div class="blank">
-					<div class="blank-page">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+				<!-- grids -->
+				<div class="grids">
+					
+					<div class="progressbar-heading grids-heading">
+						<h2>Calendar</h2>
 					</div>
-			   </div>
-				<!-- //blank-page -->
+					
+					<div class="agile-calendar-grid">
+						<div class="page">
+							<div class="col-md-3 w3l-calendar-right">
+								<div class="calendar-heading">
+									<h3>Date Picker</h3>
+								</div>
+								<input type="text" id="mytarget" value="Select Date">
+								<div class="monthly" id="mycalendar2"></div>
+							</div>
+							<div class="col-md-9 w3l-calendar-left">
+								<div class="calendar-heading">
+									<h3>Event Calendar</h3>
+								</div>
+								<div class="monthly" id="mycalendar"></div>
+							</div>
+							
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+				</div>
+				<!-- //grids -->
 			</div>
 		</div>
-		
+
 		<!-- footer -->
 		<div class="footer">
 			<p>© 2016 Colored . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
@@ -400,6 +413,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- //footer -->
 	</section>
 	<script src="js/bootstrap.js"></script>
+	
+	<!-- calendar -->
+	<script type="text/javascript" src="js/monthly.js"></script>
+	<script type="text/javascript">
+		$(window).load( function() {
+
+			$('#mycalendar').monthly({
+				mode: 'event',
+				xmlUrl: 'events.xml'
+			});
+
+			$('#mycalendar2').monthly({
+				mode: 'picker',
+				target: '#mytarget',
+				setWidth: '250px',
+				startHidden: true,
+				showTrigger: '#mytarget',
+				stylePast: true,
+				disablePast: true
+			});
+
+		switch(window.location.protocol) {
+		case 'http:':
+		case 'https:':
+		// running on a server, should be good.
+		break;
+		case 'file:':
+		alert('Just a heads-up, events will not work when run locally.');
+		}
+
+		});
+	</script>
+	<!-- //calendar -->
 	<script src="js/proton.js"></script>
+
 </body>
 </html>

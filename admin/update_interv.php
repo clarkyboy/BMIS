@@ -27,7 +27,7 @@
         $userModel->login_pass = md5(trim($_POST['password']));
       }
       
-      echo $userModel->status = $_POST['status'];
+      $userModel->status = $_POST['status'];
 
       //$addedby = $_POST['sessionid'];
 
@@ -150,10 +150,10 @@
                   <select name="status" id="" class="form-control">
                       <?php
                           for($i=0; $i<count($statuses); $i++){
-                              if(in_array($bmis['bmis_status'], $statuses)){
+                              if($bmis['bmis_status'] == $statuses[$i]){
                                   echo "<option value='".$bmis['bmis_status']."' selected>".$statuses[$i]."</option>";
                               }else{
-                                echo "<option value='".$statuses[$i]."'>".$statuses[$i]."</option>";
+                                  echo "<option value='".$statuses[$i]."'>".$statuses[$i]."</option>";
                               }
                           }
                       ?>
