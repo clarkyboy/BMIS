@@ -17,8 +17,9 @@
           <a class="dropdown-item" href="ret_interv.php"><i class="fas fa-book"></i> View Interviewer</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Sector Management</h6>
-          <a class="dropdown-item" href="404.html">404 Page</a>
-          <a class="dropdown-item" href="blank.html">Blank Page</a>
+          <a class="dropdown-item" href="ret_sc.php">Senior Citizen</a>
+          <a class="dropdown-item" href="ret_youth.php">Youth</a>
+          <a class="dropdown-item" href="ret_common.php">All Residents</a>
         </div>
       </li>
       <li class="nav-item">

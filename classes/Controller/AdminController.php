@@ -68,6 +68,25 @@
             $result = $this->conn->query($sql);
             return $result;
        }
+
+       public function getYouthResidents(){
+           $sql = "SELECT * FROM person JOIN person_sector_group ON person.person_sector_group = person_sector_group.psg_id JOIN sitio ON person.person_sitio = sitio.sitio_id JOIN barangay ON barangay.barangay_id = sitio.barangay_id WHERE person.person_sector_group = 3";
+           $result = $this->conn->query($sql);
+           $rows = $result->fetch_all(MYSQLI_ASSOC);
+           return $rows;
+       }
+       public function getSCResidents(){
+            $sql = "SELECT * FROM person JOIN person_sector_group ON person.person_sector_group = person_sector_group.psg_id JOIN sitio ON person.person_sitio = sitio.sitio_id JOIN barangay ON barangay.barangay_id = sitio.barangay_id WHERE person.person_sector_group = 8";
+            $result = $this->conn->query($sql);
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+            return $rows;
+        }
+        public function getAllResidents(){
+            $sql = "SELECT * FROM person JOIN person_sector_group ON person.person_sector_group = person_sector_group.psg_id JOIN sitio ON person.person_sitio = sitio.sitio_id JOIN barangay ON barangay.barangay_id = sitio.barangay_id";
+            $result = $this->conn->query($sql);
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+            return $rows;
+        }
     }
 
 
